@@ -37,7 +37,7 @@ $(function () {
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'http://ajax.frontend.itheima.net/api/reguser',
+            url: '/api/reguser',
             data: {
                 username: $('.reg-box input[name=username]').val(),
                 password: $('.reg-box input[name=password]').val()
@@ -55,18 +55,17 @@ $(function () {
     //用户登录
     $('#form_login').on('submit', function (e) {
         e.preventDefault();
-
         // let str = $(this).serialize();
         // console.log(str);
         $.ajax({
             type: 'POST',
-            url: 'http://ajax.frontend.itheima.net/api/login',
+            url: '/api/login',
             data: $(this).serialize(),
             success: (res) => {
-                console.log(res.token);
                 if (res.status !== 0) {
                     return layer.msg(res.message);
                 }
+                console.log(res, res.token);
                 layer.msg('恭喜你登录成功');
                 localStorage.setItem('token', res.token);
                 location.href = 'index.html'
