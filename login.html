@@ -7,16 +7,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/login.css">
-    <link rel="stylesheet" href="./assets/css/layui.css">
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
 </head>
 
 <body>
     <header class="layui-main">
         <img src="./assets/images/logo.png" alt="">
     </header>
-    <div class="loginAndregBox">
+    <div class="loginAndRegBox">
+        <div class="title-box"></div>
+        <!-- 登录区域 -->
+        <div class="log-box">
+            <!-- 登录表单 -->
+            <form class="layui-form" id="form_login" action="">
+                <!-- 用户名 -->
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-username"></i>
+                    <input value="123456" type="text" name="username" required lay-verify="required" placeholder="账号"
+                        autocomplete="off" class="layui-input">
+                </div>
+                <!-- 密码 -->
+
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>
+                    <input value="123456" type="password" name="password" required lay-verify="required|pwd"
+                        placeholder="密码" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 提交按钮 -->
+                <div class="layui-form-item">
+                    <button value="123456" class="layui-btn  layui-btn-fluid layui-btn layui-btn-normal" lay-submit
+                        lay-filter="formDemo">立即提交</button>
+                </div>
+                <!-- a链接 -->
+                <div class="layui-form-item links ">
+                    <a href="#" id="link-reg">去注册账号</a>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="reg-box" style="display: none;">
+            <!-- 登录表单 -->
+            <form class="layui-form" id="form_reg" action="">
+                <!-- 用户名 -->
+                <div class="layui-form-item">
+                    <input type="text" name="username" required lay-verify="required" placeholder="账号"
+                        autocomplete="off" class="layui-input">
+                </div>
+                <!-- 密码 -->
+                <div class="layui-form-item">
+                    <input type="password" name="password" required lay-verify="required|pwd" placeholder="密码"
+                        autocomplete="off" class="layui-input">
+                </div>
+                <!-- 重复密码 -->
+                <div class="layui-form-item">
+                    <input type="password" name="repassword" required lay-verify="required|pwd|repwd"
+                        placeholder="再次输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 提交按钮 -->
+                <div class="layui-form-item">
+                    <button class="layui-btn  layui-btn-fluid layui-btn layui-btn-normal" lay-submit
+                        lay-filter="formDemo">立即提交</button>
+                </div>
+                <!-- a链接 -->
+                <div class="layui-form-item links ">
+                    <a href="#" id="link-log">去登陆账号</a>
+                </div>
+            </form>
+
+        </div>
 
     </div>
+    <script src="./assets/lib/js/jquery.3.3.1.js"></script>
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="./assets/js/login.js"></script>
+
 </body>
 
 </html>
