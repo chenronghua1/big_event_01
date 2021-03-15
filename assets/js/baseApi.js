@@ -8,6 +8,11 @@ $.ajaxPrefilter(function (options) {
     // 在发起真正的 Ajax 请求之前，统一拼接请求的根路径
     options.url = baseURL + options.url;
     // console.log(options);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c444323... 主页功能完成
     //需要token认证的接口
     if (options.url.indexOf('/my/') != -1) {
         options.headers = { Authorization: localStorage.getItem('token') || '' };
@@ -22,4 +27,8 @@ $.ajaxPrefilter(function (options) {
             localStorage.removeItem('token')
         }
     }
+<<<<<<< HEAD
+=======
+>>>>>>> a267e7e... 主页功能完成
+>>>>>>> c444323... 主页功能完成
 })
