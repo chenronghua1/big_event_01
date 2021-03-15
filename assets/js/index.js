@@ -3,15 +3,6 @@ $(function () {
 })
 
 function getUserInof() {
-<<<<<<< HEAD
-    $.ajax({
-        url: '/my/userinfo',
-        headers: {
-            Authorization: localStorage.getItem('token') || ''
-        },
-        success: (res) => {
-            console.log(res);
-=======
     // 用户资料渲染
     $.ajax({
         url: '/my/userinfo',
@@ -20,15 +11,11 @@ function getUserInof() {
         // },
         success: (res) => {
             // console.log(res);
->>>>>>> a267e7e... 主页功能完成
             if (res.status !== 0) {
                 return layui.layer.msg(res.message);
 
             }
             renderAvatar(res.data)
-<<<<<<< HEAD
-        }
-=======
         },
         //complete无论成功与否，都会执行
         // complete: function (res) {
@@ -52,7 +39,6 @@ function getUserInof() {
 
 
         });
->>>>>>> a267e7e... 主页功能完成
     })
 }
 
