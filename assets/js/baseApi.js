@@ -14,9 +14,9 @@ $.ajaxPrefilter(function (options) {
     }
     // token认证失败时，清空本地token并跳转到登录页面
     options.complete = function (res) {
-        console.log(res);
+        // console.log(res);
         let obj = res.responseJSON;
-        console.log(obj);
+        // console.log(obj);
         if (obj.status == 1 && obj.message == '身份认证失败！') {
             location.href = 'login.html'
             localStorage.removeItem('token')
