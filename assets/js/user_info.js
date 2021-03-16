@@ -2,7 +2,7 @@ $(function () {
     // 1.校验规则定义
     let form = layui.form;
     form.verify({
-        nicknaem: function (value) {
+        nickname: function (value) {
             if (value.trim().length > 6) {
                 return '昵称长度1~6位之间';
             }
@@ -16,7 +16,7 @@ $(function () {
             type: 'get',
             url: '/my/userinfo',
             success: (res) => {
-                // console.log(res);
+                // console.log(res.data);
                 if (res.status != 0) {
                     return layer.msg = (res.message);
                 }
