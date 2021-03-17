@@ -1,9 +1,9 @@
 // window.onload 外部的文件和图片音频视频... 全部加载完毕在执行
 $(window).on("load", function () {
     // 1.1 获取裁剪区域的 DOM 元素
-    let $image = $('#image')
+    var $image = $('#image')
     // 1.2 配置选项
-    let options = {
+    const options = {
         // 纵横比
         aspectRatio: 1,
         // 指定预览区域
@@ -19,23 +19,28 @@ $(window).on("load", function () {
 
     // 3.选择图片后，修改裁剪区域
     let layer = layui.layer;
-    $("#file").on("change", function (e) {
-
-        // e.target 如果此事件为冒泡执行，e.target指向的就是目标阶段的事件源 
-        var file = e.target.files[0];
-        console.log(file);
-        // 非空校验
-        if (file === undefined) {
-            return layer.msg("用户头像为必传值！")
+    $('#file').on('change', function (e) {
+        // 获取用户选择的文件
+        var filelist = e.target.files
+        if (filelist.length === 0) {
+            return layer.msg('请选择照片！')
         }
-        // 根据文件产生一个内存模拟地址
-        var newImgURL = URL.createObjectURL(file)
-        // 销毁原有图片，设置新路径，重新渲染
+
+        // 1. 拿到用户选择的文件
+        var file = e.target.files[0]
+        // 2. 将文件，转化为路径
+        var imgURL = URL.createObjectURL(file)
+        // 3. 重新初始化裁剪区域
         $image
-            .cropper('destroy')      // 销毁旧的裁剪区域
-            .attr('src', newImgURL)  // 重新设置图片路径
-            .cropper(options)        // 重新初始化裁剪区域
+            .cropper('destroy') // 销毁旧的裁剪区域
+            .attr('src', imgURL) // 重新设置图片路径
+            .cropper(options) // 重新初始化裁剪区域
     })
+
+
+
+
+
 
     // 4.修改头像
     $("#btnUpload").on("click", function () {
@@ -46,8 +51,8 @@ $(window).on("load", function () {
                 height: 100
             })
             .toDataURL('image/png')       // 将 Canvas 画布上的内容，转化为 base64 格式的字符串
-        console.log(typeof dataURL)
-        console.log(dataURL)
+        // console.log(typeof dataURL)
+        // console.log(dataURL)
 
         // 发送ajax
         $.ajax({
@@ -63,7 +68,6 @@ $(window).on("load", function () {
                 }
                 // 成功提示，渲染头像
                 layer.msg("恭喜您，头像上传成功！");
-                window.parent.getUserInfo();
             }
         });
     });
